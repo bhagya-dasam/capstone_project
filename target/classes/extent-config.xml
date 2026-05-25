@@ -4,7 +4,7 @@
         <theme>dark</theme>
         <encoding>UTF-8</encoding>
         <protocol>https</protocol>
-        <documentTitle>TutorialsNinja Automation</documentTitle>
+        <documentTitle>capstone_ninja</documentTitle>
         <reportName>Cucumber BDD Report</reportName>
         <timeStampFormat>dd MMM yyyy, HH:mm:ss</timeStampFormat>
     </configuration>
