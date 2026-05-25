@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -47,11 +48,13 @@ public class HomePage {
 
     public void clickMyAccount() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-        wait.until(ExpectedConditions.elementToBeClickable(myAccountDropdown));
+        wait.until(ExpectedConditions.visibilityOf(myAccountDropdown));
 
-        myAccountDropdown.click();
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(myAccountDropdown).click().perform();
     }
 
     public void clickRegister() {
