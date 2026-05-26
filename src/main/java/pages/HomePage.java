@@ -34,7 +34,7 @@ public class HomePage {
     @FindBy(xpath = "//a[@id='wishlist-total']")
     WebElement wishlistLink;
 
-    @FindBy(xpath = "//span[text()='Shopping Cart']")
+    @FindBy(xpath = "//a[contains(text(),'Shopping Cart')]")
     WebElement cartLink;
 
     @FindBy(xpath = "//span[text()='Checkout']")
