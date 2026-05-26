@@ -94,9 +94,19 @@ public class HomePage {
     }
 
     public void goToCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(cartLink)).click();
-    }
 
+        driver.manage().window().maximize();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        wait.until(ExpectedConditions.visibilityOf(cartLink));
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("arguments[0].scrollIntoView(true);", cartLink);
+
+        js.executeScript("arguments[0].click();", cartLink);
+    }
     public void goToCheckout() {
         wait.until(ExpectedConditions.elementToBeClickable(checkoutLink)).click();
     }
