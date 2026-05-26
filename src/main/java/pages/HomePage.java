@@ -2,6 +2,7 @@ package pages;
 import java.time.Duration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +35,7 @@ public class HomePage {
     @FindBy(xpath = "//a[@id='wishlist-total']")
     WebElement wishlistLink;
 
-    @FindBy(xpath = "//a[contains(text(),'Shopping Cart')]")
+    @FindBy(xpath="//span[text()='Shopping Cart']")
     WebElement cartLink;
 
     @FindBy(xpath = "//span[text()='Checkout']")
@@ -95,17 +96,23 @@ public class HomePage {
 
     public void goToCart() {
 
-        driver.manage().window().maximize();
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-        wait.until(ExpectedConditions.visibilityOf(cartLink));
+        WebElement cartBtn = wait.until(
+            ExpectedConditions.elementToBeClickable(
+                By.id("cart-total")
+            )
+        );
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        cartBtn.click();
 
-        js.executeScript("arguments[0].scrollIntoView(true);", cartLink);
+        WebElement shoppingCart = wait.until(
+            ExpectedConditions.elementToBeClickable(
+                By.xpath("//strong[text()=' View Cart']")
+            )
+        );
 
-        js.executeScript("arguments[0].click();", cartLink);
+        shoppingCart.click();
     }
     public void goToCheckout() {
         wait.until(ExpectedConditions.elementToBeClickable(checkoutLink)).click();
